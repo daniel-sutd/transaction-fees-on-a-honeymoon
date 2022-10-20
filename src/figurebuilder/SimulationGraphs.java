@@ -147,13 +147,13 @@ public class SimulationGraphs {
 			if(i < graphArray.length - 1 && Math.abs(graphArray[i][0] - start - h) > Math.abs(graphArray[i+1][0] - start - h)) {
 				i++;
 			}
-			int n = drawPoisson(3*T);
+			int n = drawPoisson(3*T); // 3*T can be changed to 2.75*T, to ensure lambda = 3 as in the text of the paper 
 			for(int j=0;j<n;j++) {
 				V.add(graphArray[i][1]*0.75 - 2.5*Math.random()); 
 			}
 			int n2 = drawPoisson(0.25*T);
 			for(int j=0;j<n2;j++) {
-				V.add(ParetoGen.nextDouble(r, 1.5, graphArray[i][1]/10+1) + graphArray[i][1]*0.8); 
+				V.add(ParetoGen.nextDouble(r, 1.5, graphArray[i][1]/10+1) + graphArray[i][1]*0.8); // here, 1.5 is the shape of the Pareto distribution - this can be changed to 1.35 to reflect the text of the paper
 			}
 			Collections.sort(V);
 			List<Double> B = new ArrayList<Double>(n);
